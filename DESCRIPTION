@@ -1,0 +1,26 @@
+Package: hotwheelBox
+Title: What the Package Does (One Line, Title Case)
+Version: 1.7.0.0
+Authors@R: 
+    person(given = "Kamil", 
+                  family = "Kuflewski", 
+                  email = "kamil2005kai@gmail.com", 
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = ""))
+Description: This package provides tools to analyze data from collecthw.com, a platform for managing and exploring your Hot Wheels collection. Users can conveniently enter, view, and export their collection data for further analysis.
+License: Apache 2.0
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
+Imports: 
+    ggplot2,
+    dplyr,
+    magrittr,
+    rmarkdown,
+    utils
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Depends: 
+    R (>= 3.5)
+LazyData: true

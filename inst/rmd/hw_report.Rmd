@@ -1,0 +1,70 @@
+---
+title: "Hot Wheels Analyse"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 3
+    theme: 
+      version: 4
+      bootswatch: flatly
+    highlight: tango
+    number_sections: true
+    code_folding: hide
+    df_print: paged
+params:
+  data: NULL
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r}
+df <- params$data
+df <- standardize_column_names(df)
+```
+
+Shows a plot of how much modeles you have from a certin year.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+df %>%
+  count(year) %>%
+  ggplot(aes(x = year, y = n)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "modeles per year", x = "year", y = "count")
+```
+
+Shows a plot of top 10 most colors.
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+df %>%
+  count(color) %>%
+  top_n(10, n) %>%
+  ggplot(aes(x = reorder(color, n), y = n)) +
+  geom_col(fill = "skyblue") +
+  coord_flip() +
+  labs(title = "Top 10 color", x = "color", y = "count")
+```
+
+Shows a chart of the car brands you own.
+
+```{r}
+print(count_brand_occurrences(df))
+```
+
+Shows a chart of all unique models.
+
+```{r}
+print(list_unique_models(df))
+```
+
+Shows a chart of all unique series.
+
+```{r}
+print(list_unique_series(df))
+```
